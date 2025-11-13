@@ -1,9 +1,0 @@
-[Unit]
-Description=Minecraft TCP Socket
-
-[Socket]
-ListenStream=25565
-NoDelay=true
-
-[Install]
-WantedBy=sockets.target
