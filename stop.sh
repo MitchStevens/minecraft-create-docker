@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo docker stop serb
+docker-compose down

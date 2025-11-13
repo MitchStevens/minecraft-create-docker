@@ -1,0 +1,10 @@
+[Unit]
+Description=Minecraft Docker Server
+Requires=minecraft.socket
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/docker docker run -d -p 25565:25565 --name serb --restart=on-failure minecraft-create-server
+ExecStop=/usr/bin/docker stop serb
+Restart=always

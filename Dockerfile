@@ -1,20 +1,14 @@
-FROM ubuntu
-WORKDIR /data
+# Use the official itzg/minecraft-server image as base
+FROM itzg/minecraft-server:latest
 
-RUN apt update
+# Set environment variables for NeoForge
+ENV TYPE=NEOFORGE
+ENV VERSION=1.21.1
+ENV NEOFORGE_VERSION=latest
+ENV EULA=TRUE
 
+# Copy your local mods folder into the container
+COPY mods /mods
 
-RUN apt-get update
-RUN apt-get install -y openjdk-21-jdk
-#    apt-get clean && \
-#    rm -rf /var/lib/apt/lists/*
-COPY ./neoforge-21.1.153-installer.jar ./neoforge-installer.jar
-RUN java -jar ./neoforge-installer.jar
-
-COPY ./eula.txt ./eula.txt
-COPY ./mods ./mods
-COPY ./user_jvm_args.txt ./user_jvm_args.txt
-
+# Expose the default Minecraft port
 EXPOSE 25565
-
-CMD ./run.sh
