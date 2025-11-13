@@ -1,6 +1,6 @@
 services:
   minecraft:
-    image: minecraft-neoforge
+    build: .
     container_name: serb
     ports:
       - "25565:25565"
